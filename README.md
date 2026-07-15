@@ -28,7 +28,6 @@ cd blent-botecom
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -e ".[dev,ui]"
 ```
 
 ### Pour MAC :
@@ -78,7 +77,7 @@ Vérifier l'installation CUDA sans charger le modèle avec `run.sh` :
 `./run.sh --cuda` exécute aussi cette vérification automatiquement avant un lancement CLI ou Streamlit. L'option `--check` sert uniquement à diagnostiquer sans lancer l'application.
 
 
-## Configuration LLM
+## Configuration LLM et lancement des tests avec pytest
 
 Le code applicatif reste identique quel que soit le matériel. Le choix du backend se fait avec des variables d'environnement.
 
