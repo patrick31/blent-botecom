@@ -186,6 +186,9 @@ if [[ "$mode" == "test" ]]; then
 fi
 
 if [[ "$mode" == "streamlit" ]]; then
+  export STREAMLIT_SERVER_ENABLE_CORS=false
+  export STREAMLIT_SERVER_ENABLE_XSRF_PROTECTION=false
+  export STREAMLIT_SERVER_HEADLESS=true
   PYTHONPATH=src streamlit run app_streamlit.py
   exit 0
 fi
