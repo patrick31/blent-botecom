@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+import os
 import threading
 from queue import Queue
 import re
@@ -47,6 +48,10 @@ class HuggingFaceLLMFactory:
     def _build_transformers_llm(self):
         """Backend Nvidia/Linux basé sur Transformers, Accelerate et option 4-bit."""
 
+        os.environ["TORCH_DISABLE_NATIVE_JIT"] = (
+            "1" if self.config.disable_torch_native_jit else "0"
+        )
+
         from langchain_core.runnables import RunnableLambda
         from transformers import AutoConfig, AutoModelForCausalLM, AutoModelForSeq2SeqLM, AutoTokenizer
 
@@ -60,7 +65,7 @@ class HuggingFaceLLMFactory:
         tokenizer = AutoTokenizer.from_pretrained(self.config.llm_model_id)
         model_kwargs = {
             "device_map": self.config.device_map,
-            "torch_dtype": self.config.torch_dtype,
+            "dtype": self.config.torch_dtype,
         }
         if self.config.load_in_4bit:
             from transformers import BitsAndBytesConfig

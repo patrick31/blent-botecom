@@ -31,10 +31,11 @@ def pytest_cmdline_main(config: pytest.Config) -> int | None:
             "Plateforme cible Nvidia/CUDA:\n"
             '  export LLM_BACKEND="transformers"\n'
             '  export HF_LLM_MODEL_ID="Qwen/Qwen3-30B-A3B-Instruct-2507"\n'
-            '  export HF_DEVICE_MAP="auto"\n'
-            '  export HF_TORCH_DTYPE="auto"\n'
-            '  export HF_LOAD_IN_4BIT="true"\n'
-            "  pytest"
+        '  export HF_DEVICE_MAP="auto"\n'
+        '  export HF_TORCH_DTYPE="auto"\n'
+        '  export HF_LOAD_IN_4BIT="true"\n'
+        '  export TORCH_DISABLE_NATIVE_JIT="1"\n'
+        "  pytest"
         )
 
     if backend == "mlx":

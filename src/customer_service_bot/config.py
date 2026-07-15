@@ -41,6 +41,7 @@ class AppConfig:
     device_map: str = "auto"
     torch_dtype: str = "auto"
     load_in_4bit: bool = False
+    disable_torch_native_jit: bool = True
     use_llm: bool = True
 
     @classmethod
@@ -59,5 +60,7 @@ class AppConfig:
             device_map=os.getenv("HF_DEVICE_MAP", cls.device_map),
             torch_dtype=os.getenv("HF_TORCH_DTYPE", cls.torch_dtype),
             load_in_4bit=os.getenv("HF_LOAD_IN_4BIT", "false").lower() in {"1", "true", "yes", "on"},
+            disable_torch_native_jit=os.getenv("TORCH_DISABLE_NATIVE_JIT", "1").lower()
+            in {"1", "true", "yes", "on"},
             use_llm=os.getenv("USE_LLM", "true").lower() in {"1", "true", "yes", "on"},
         )

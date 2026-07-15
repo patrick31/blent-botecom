@@ -112,6 +112,7 @@ export HF_LLM_MODEL_ID="Qwen/Qwen3-30B-A3B-Instruct-2507"
 export HF_DEVICE_MAP="auto"
 export HF_TORCH_DTYPE="auto"
 export HF_LOAD_IN_4BIT="true"
+export TORCH_DISABLE_NATIVE_JIT="1"
 export LLM_TEMPERATURE="0.0"
 export MAX_NEW_TOKENS="180"
 ```
@@ -318,6 +319,7 @@ export HF_LLM_MODEL_ID="Qwen/Qwen3-30B-A3B-Instruct-2507"
 export HF_DEVICE_MAP="auto"
 export HF_TORCH_DTYPE="auto"
 export HF_LOAD_IN_4BIT="true"
+export TORCH_DISABLE_NATIVE_JIT="1"
 pytest
 ```
 
